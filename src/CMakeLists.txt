@@ -26,10 +26,8 @@ target_link_libraries( v2t PRIVATE ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} )
 #
 # GLFW3
 #
-find_path( GLFW3_INCLUDE_DIR GLFW/glfw3.h )
-find_library( GLFW3_LIBRARY glfw3dll )
-target_include_directories( v2t PRIVATE ${GLFW3_INCLUDE_DIR} )
-target_link_libraries( v2t PRIVATE ${GLFW3_LIBRARY} )
+find_package( glfw3 REQUIRED )
+target_link_libraries( v2t PRIVATE glfw )
 
 #
 # glxw
@@ -39,7 +37,5 @@ target_link_libraries( v2t PRIVATE glxw )
 #
 # libpng
 #
-find_path( LIBPNG_INCLUDE_DIR libpng16/png.h )
-find_library( LIBPNG_LIBRARY libpng16 )
-target_include_directories( v2t PRIVATE ${LIBPNG_INCLUDE_DIR} )
-target_link_libraries( v2t PRIVATE ${LIBPNG_LIBRARY} )
+find_package( png REQUIRED )
+target_link_libraries( v2t PRIVATE ${PNG_LIBRARY} )
